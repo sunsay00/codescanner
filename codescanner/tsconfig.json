@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+      "strictFunctionTypes": true,
+      "strictPropertyInitialization": true,
+      "skipLibCheck": true,
+      "outDir": "./build",
+      "rootDir": "./src",
+      "sourceMap": true,
+      "inlineSourceMap": false,
+      "inlineSources": false,
+      "noEmitOnError": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": false,
+      "moduleResolution": "node",
+      "target": "es2015",
+      "module": "es2015",
+      "jsx": "react-native",
+      "pretty": true,
+      "lib": [
+        "dom",
+        "es5",
+        "scripthost",
+        "es2015.promise",
+        "es2015",
+        "es2017.object",
+        "es2015.reflect"
+      ],
+      "watch": false,
+      "baseUrl": ".",
+      "paths": { "*": ["*", "*.ios", "*.android"] }
+    },
+    "include": [
+      "./e2e/**/*.ts",
+      "./e2e/**/*.tsx",
+      "./src/**/*.ts",
+      "./src/**/*.tsx"
+    ],
+    "exclude": [
+      "**/__mocks__/*.ts",
+      "node_modules",
+      "./src/**/*.web.ts",
+      "./src/**/*.web.tsx"
+    ]
+  }
+  
