@@ -6,7 +6,7 @@ import Button from './button';
 const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	<View
 		style={{
-			backgroundColor: colors.background,
+			backgroundColor: 'white',
 			height: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
@@ -17,7 +17,9 @@ const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	>
 		<TouchableOpacity style={{ flex: 1 }} onPress={props.onItemPress}>
 			<View>
-				<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1 }}>{props.code.code}</Text>
+				<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1, color: colors.text }}>
+					{props.code.code}
+				</Text>
 			</View>
 		</TouchableOpacity>
 	</View>
@@ -30,7 +32,7 @@ export default (props: {
 	onScan: (awb: AWB) => void;
 	onCodeDelete: (awb: AWB, code: BarCode) => void;
 }) => (
-	<View>
+	<View style={{ height: '100%', backgroundColor: colors.background }}>
 		{props.awb.codes == undefined || props.awb.codes.length == 0 ? (
 			<View
 				style={{
@@ -81,7 +83,9 @@ export default (props: {
 					))}
 				</View>
 				)} />
-				<Button mode="primary" title="Continue Scanning" onPress={() => props.onScan(props.awb)} />
+				<View style={{ paddingTop: 10 }}>
+					<Button mode="primary" title="Continue Scanning" onPress={() => props.onScan(props.awb)} />
+				</View>
 			</ScrollView>
 		)}
 	</View>

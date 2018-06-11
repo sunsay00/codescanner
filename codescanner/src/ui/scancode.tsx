@@ -17,7 +17,9 @@ export default (props: { code: BarCode; awb: AWB; onCodeDelete: (awb: AWB, code:
 					height: 50
 				}}
 			>
-				<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1 }}>{props.code.code}</Text>
+				<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1, color: colors.text }}>
+					{props.code.code}
+				</Text>
 			</View>
 		</ScrollView>
 		<View>
@@ -30,11 +32,12 @@ const styles = StyleSheet.create({
 	iphonex: {
 		flex: 1,
 		marginBottom: 40,
-		marginTop: 20
+		backgroundColor: colors.background
 	},
 	notIphonex: {
 		flex: 1,
 		marginBottom: 0,
-		marginTop: 0
+		marginTop: 0,
+		backgroundColor: colors.background
 	}
 });

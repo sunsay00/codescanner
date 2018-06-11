@@ -7,22 +7,27 @@ type Props = NavigatorProps;
 type State = {
 	loading: boolean;
 	awbs: AWB[];
+	filtered: AWB[];
 	selected: string[];
 };
 
 class Home extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
+		let awbs = [
+			{ id: '1', awbNumnber: '11111111111', houseNumber: '2222222222222', poNumber: '3e333e33333' },
+			{
+				id: '2',
+				awbNumnber: '2322222222',
+				houseNumber: '3344455555',
+				poNumber: '334343d993',
+				codes: [ { code: 'dkkddkdk' }, { code: 'ddddd' } ]
+			}
+		];
 		this.state = {
 			loading: false,
-			awbs: [
-				{ id: '1', awbNumnber: '1' },
-				{
-					id: '2',
-					awbNumnber: '2',
-					codes: [ { code: 'dkkddkdk', scannedDate: '1/1/2018' }, { code: 'ddddd', scannedDate: '1/1/2018' } ]
-				}
-			],
+			awbs,
+			filtered: awbs,
 			selected: []
 		};
 
@@ -77,16 +82,29 @@ class Home extends React.Component<Props, State> {
 		this.setState({ selected: newSelection });
 	};
 
+	onSearchText = (text: string) => {
+		const filtered = this.state.awbs.filter(
+			(a) =>
+				a.awbNumnber.toUpperCase().indexOf(text.toUpperCase()) != -1 ||
+				a.houseNumber.toUpperCase().indexOf(text.toUpperCase()) != -1 ||
+				a.poNumber.toUpperCase().indexOf(text.toUpperCase()) != -1
+		);
+		this.setState({
+			filtered
+		});
+	};
+
 	render() {
 		return (
 			<View>
 				<UIHome
 					loading={this.state.loading}
-					awbs={this.state.awbs}
+					awbs={this.state.filtered}
 					selected={this.state.selected}
 					onItemPress={this.onItemPress}
 					onUpload={this.onUpload}
 					onSelect={this.onSelect}
+					onSearchText={this.onSearchText}
 				/>
 			</View>
 		);
