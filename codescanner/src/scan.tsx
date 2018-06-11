@@ -6,6 +6,7 @@ type Mode = 'loading' | 'denied' | 'ready';
 
 type Props = NavigatorProps & {
 	awb: AWB;
+	onScan: (awb: AWB, code: string) => void;
 };
 
 type State = {
@@ -55,7 +56,9 @@ class Scan extends React.Component<Props, State> {
 		}
 	};
 
-	onReadCode = (event: any) => {};
+	onReadCode = (event: any) => {
+		this.props.onScan(this.props.awb, 'asfdad');
+	};
 
 	render() {
 		if (this.state.mode === 'loading') {
