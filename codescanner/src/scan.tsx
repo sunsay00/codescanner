@@ -18,7 +18,7 @@ class Scan extends React.Component<Props, State> {
 		this.state = {
 			mode: 'loading'
 		};
-		//this.props.navigator.toggleNavBar({ to: 'hidden' });
+		this.props.navigator.toggleNavBar({ to: 'hidden' });
 	}
 	async componentDidMount() {
 		this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
@@ -55,6 +55,8 @@ class Scan extends React.Component<Props, State> {
 		}
 	};
 
+	onReadCode = (event: any) => {};
+
 	render() {
 		if (this.state.mode === 'loading') {
 			return (
@@ -71,13 +73,16 @@ class Scan extends React.Component<Props, State> {
 			);
 		} else {
 			return (
-				<View>
+				<View style={{ height: '50%' }}>
 					<CameraKitCameraScreen
 						actions={{ rightButtonText: 'Done', leftButtonText: 'Cancel' }}
 						onBottomButtonPressed={this.onPress}
-						scanBarcode={true}
+						showFrame={true}
 						laserColor={'blue'}
+						surfaceColor={'black'}
 						frameColor={'yellow'}
+						onReadCode={this.onReadCode}
+						colorForScannerFrame={'blue'}
 					/>
 				</View>
 			);

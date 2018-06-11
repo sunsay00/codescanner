@@ -81,7 +81,7 @@ export default (props: {
 					))}
 				</View>
 				)} />
-				<Button mode="primary" title="Scan" onPress={() => props.onScan(props.awb)} />
+				<Button mode="primary" title="Continue Scanning" onPress={() => props.onScan(props.awb)} />
 			</ScrollView>
 		)}
 	</View>

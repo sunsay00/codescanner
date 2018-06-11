@@ -48,28 +48,18 @@ export default (props: {
 	onUpload: () => void;
 	onSelect: (awb: string) => void;
 }) => (
-	<View style={{ flex: 1 }}>
-		<View>
-			<ScrollView>
-				<View
-					style={{
-						width: '100%',
-						backgroundColor: colors.background
-					}}
-				>
-					{props.awbs.map((item) => (
-						<Item
-							key={item.id}
-							awb={item}
-							selected={props.selected.indexOf(item.id) != -1}
-							onItem={() => props.onItemPress(item)}
-							onSelect={() => props.onSelect(item.id)}
-						/>
-					))}
-				</View>
-				)} />
-			</ScrollView>
-		</View>
+	<View>
+		<ScrollView>
+			{props.awbs.map((item) => (
+				<Item
+					key={item.id}
+					awb={item}
+					selected={props.selected.indexOf(item.id) != -1}
+					onItem={() => props.onItemPress(item)}
+					onSelect={() => props.onSelect(item.id)}
+				/>
+			))}
+		</ScrollView>
 		<View>
 			<Button
 				mode="primary"
@@ -80,73 +70,3 @@ export default (props: {
 		</View>
 	</View>
 );
-
-const styles = StyleSheet.create({
-	iphonex: {
-		flex: 1,
-		marginBottom: 40,
-		marginTop: 20
-	},
-	notIphonex: {
-		flex: 1,
-		marginBottom: 0,
-		marginTop: 0
-	},
-	container: {
-		flex: 1,
-		justifyContent: 'space-between',
-		backgroundColor: colors.background
-	},
-	content: {
-		flex: 7
-	},
-	chooseContainer: {
-		borderBottomWidth: StyleSheet.hairlineWidth,
-		borderBottomColor: colors.border
-	},
-	chooseSelected: {
-		//borderBottomWidth: 0.5,
-		//borderBottomColor: colors.lightGray,
-		height: 48,
-		alignSelf: 'stretch',
-		backgroundColor: colors.background,
-		paddingHorizontal: 15,
-		paddingVertical: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	choose: {
-		height: 48,
-		alignSelf: 'stretch',
-		backgroundColor: colors.background,
-		paddingHorizontal: 15,
-		paddingVertical: 15,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	choosePrimaryContainer: {
-		flex: 12,
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center'
-	},
-	choosePrimarySelectedText: {
-		fontFamily: fontFamilies.bold,
-		fontSize: fontSizes.h2,
-		justifyContent: 'center'
-	},
-	choosePrimaryText: {
-		fontFamily: fontFamilies.normal,
-		fontSize: fontSizes.h2,
-		justifyContent: 'center'
-	},
-	chooseSecondaryContainer: {
-		flexDirection: 'row',
-		flex: 4,
-		justifyContent: 'flex-end',
-		alignItems: 'center',
-		borderLeftWidth: 1
-	}
-});
