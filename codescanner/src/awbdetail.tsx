@@ -84,20 +84,16 @@ class AWBDetail extends React.Component<Props, State> {
 	};
 
 	onScanCode = (awb: AWB, code: string) => {
-		AsyncStorage.getItem(awb.id, (err, value) => {
-			if (value != undefined) {
-				let currentAWB = JSON.parse(value);
-				if (currentAWB.codes == undefined) {
-					currentAWB.codes = [];
-				}
-				currentAWB.codes.push({ code: code, scannedDate: '1/1/2019' });
-				AsyncStorage.setItem(awb.id, JSON.stringify(currentAWB));
-				this.setState({
-					awb: currentAWB
-				});
-				this.props.onChange(currentAWB);
-			}
+		let currentAWB = awb;
+		if (currentAWB.codes == undefined) {
+			currentAWB.codes = [];
+		}
+		currentAWB.codes.push({ code: code });
+		AsyncStorage.setItem(awb.id, JSON.stringify(currentAWB));
+		this.setState({
+			awb: currentAWB
 		});
+		this.props.onChange(currentAWB);
 	};
 
 	render() {
