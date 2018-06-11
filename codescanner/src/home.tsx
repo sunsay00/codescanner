@@ -36,9 +36,22 @@ class Home extends React.Component<Props, State> {
 			screen: 'scanner.awbdetail',
 			backButtonHidden: true,
 			passProps: {
-				awb
+				awb,
+				onChange: this.onChange
 			}
 		});
+	};
+
+	onChange = (awb: AWB) => {
+		let currentAWBs = [ ...this.state.awbs ];
+		let found = currentAWBs.find((a) => a.id == awb.id);
+		if (found != undefined) {
+			let index = currentAWBs.indexOf(found);
+			currentAWBs[index] = awb;
+			this.setState({
+				awbs: currentAWBs
+			});
+		}
 	};
 
 	onUpload = () => {

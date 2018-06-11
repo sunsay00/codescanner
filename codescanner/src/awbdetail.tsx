@@ -5,6 +5,7 @@ import BackButtonFrame from './backbuttonframe';
 
 type Props = NavigatorProps & {
 	awb: AWB;
+	onChange: (awb: AWB) => void;
 };
 
 type State = {
@@ -59,12 +60,12 @@ class AWBDetail extends React.Component<Props, State> {
 				const currentAWB = { ...this.state.awb };
 				if (awb.codes != undefined) {
 					currentAWB.codes = awb.codes.filter((c) => c.code != code.code);
-					//currentAWB.awbNumnber = 'ddd';
-
 					this.setState({
 						awb: currentAWB
 					});
+					AsyncStorage.setItem(awb.id, JSON.stringify(this.state.awb));
 				}
+				this.props.onChange(this.state.awb);
 				this.props.navigator.pop();
 			} else {
 				alert('Invalid record');
@@ -76,7 +77,25 @@ class AWBDetail extends React.Component<Props, State> {
 		this.props.navigator.showModal({
 			screen: 'scanner.scan',
 			passProps: {
-				awb
+				awb,
+				onScan: this.onScanCode
+			}
+		});
+	};
+
+	onScanCode = (awb: AWB, code: string) => {
+		AsyncStorage.getItem(awb.id, (err, value) => {
+			if (value != undefined) {
+				let currentAWB = JSON.parse(value);
+				if (currentAWB.codes == undefined) {
+					currentAWB.codes = [];
+				}
+				currentAWB.codes.push({ code: code, scannedDate: '1/1/2019' });
+				AsyncStorage.setItem(awb.id, JSON.stringify(currentAWB));
+				this.setState({
+					awb: currentAWB
+				});
+				this.props.onChange(currentAWB);
 			}
 		});
 	};
