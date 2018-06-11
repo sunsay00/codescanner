@@ -49,9 +49,9 @@ class Scan extends React.Component<Props, State> {
 	onPress = (event: any) => {
 		if (event.type === 'capture') {
 		} else if (event.type === 'left') {
-			//this.props.navigator.dismissModal();
+			this.props.navigator.dismissModal();
 		} else if (event.type === 'right') {
-			//this.props.navigator.dismissModal();
+			this.props.navigator.dismissModal();
 		}
 	};
 
@@ -73,18 +73,16 @@ class Scan extends React.Component<Props, State> {
 			);
 		} else {
 			return (
-				<View style={{ height: '50%' }}>
-					<CameraKitCameraScreen
-						actions={{ rightButtonText: 'Done', leftButtonText: 'Cancel' }}
-						onBottomButtonPressed={this.onPress}
-						showFrame={true}
-						laserColor={'blue'}
-						surfaceColor={'black'}
-						frameColor={'yellow'}
-						onReadCode={this.onReadCode}
-						colorForScannerFrame={'blue'}
-					/>
-				</View>
+				<CameraKitCameraScreen
+					actions={{ rightButtonText: 'Done', leftButtonText: 'Cancel' }}
+					onBottomButtonPressed={this.onPress}
+					showFrame={true}
+					laserColor={'blue'}
+					surfaceColor={'black'}
+					frameColor={'yellow'}
+					onReadCode={this.onReadCode}
+					colorForScannerFrame={'blue'}
+				/>
 			);
 		}
 	}

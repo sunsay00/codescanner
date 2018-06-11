@@ -73,7 +73,7 @@ class AWBDetail extends React.Component<Props, State> {
 	};
 
 	onScan = (awb: AWB) => {
-		this.props.navigator.push({
+		this.props.navigator.showModal({
 			screen: 'scanner.scan',
 			passProps: {
 				awb

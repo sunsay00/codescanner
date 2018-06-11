@@ -35,9 +35,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* codescannerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* codescannerTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		5426BCC185054428BFB98313 /* libRNToastNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DB61A516B14ECEA463D6E5 /* libRNToastNative.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		69E9FC7F118F42E895FF1D93 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B184F4ACFC24B49A648673A /* libRCTCamera.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B129230220CA31E0001A11B0 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B129230120CA31CB001A11B0 /* libReactNativeNavigation.a */; };
@@ -332,13 +330,6 @@
 			remoteGlobalIDString = 2646934E1CFB2A6B00F3A740;
 			remoteInfo = ReactNativeCameraKit;
 		};
-		B129237B20CB8628001A11B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 047D9DB5875443B682C4FFB9 /* RNToastNative.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNToastNative;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -351,7 +342,6 @@
 		00E356EE1AD99517003FC87E /* codescannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = codescannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* codescannerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = codescannerTests.m; sourceTree = "<group>"; };
-		047D9DB5875443B682C4FFB9 /* RNToastNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNToastNative.xcodeproj; path = "../node_modules/react-native-toast-native/ios/RNToastNative.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* codescanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = codescanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,8 +393,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				69E9FC7F118F42E895FF1D93 /* libRCTCamera.a in Frameworks */,
-				5426BCC185054428BFB98313 /* libRNToastNative.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,7 +581,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				047D9DB5875443B682C4FFB9 /* RNToastNative.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -663,14 +650,6 @@
 			isa = PBXGroup;
 			children = (
 				B129234120CA4D68001A11B0 /* libReactNativeCameraKit.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B129237820CB8627001A11B0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B129237C20CB8628001A11B0 /* libRNToastNative.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -841,10 +820,6 @@
 				{
 					ProductGroup = B12922D820CA31CB001A11B0 /* Products */;
 					ProjectRef = B12922D720CA31CB001A11B0 /* ReactNativeNavigation.xcodeproj */;
-				},
-				{
-					ProductGroup = B129237820CB8627001A11B0 /* Products */;
-					ProjectRef = 047D9DB5875443B682C4FFB9 /* RNToastNative.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1129,13 +1104,6 @@
 			fileType = archive.ar;
 			path = libReactNativeCameraKit.a;
 			remoteRef = B129234020CA4D68001A11B0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B129237C20CB8628001A11B0 /* libRNToastNative.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNToastNative.a;
-			remoteRef = B129237B20CB8628001A11B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

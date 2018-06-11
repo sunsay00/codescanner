@@ -17,7 +17,7 @@ const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	>
 		<TouchableOpacity style={{ flex: 1 }} onPress={props.onItemPress}>
 			<View>
-				<Text>{props.code.code}</Text>
+				<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1 }}>{props.code.code}</Text>
 			</View>
 		</TouchableOpacity>
 	</View>

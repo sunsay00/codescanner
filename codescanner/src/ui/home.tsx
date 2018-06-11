@@ -10,18 +10,21 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 			height: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
+			justifyContent: 'center',
 			borderBottomColor: colors.border,
 			borderBottomWidth: 1,
 			paddingHorizontal: 10
 		}}
 	>
 		<TouchableOpacity style={{ flex: 10 }} onPress={props.onItem}>
-			<View>
-				<Text>{props.awb.awbNumnber}</Text>
-			</View>
+			<Text style={{ fontFamily: fontFamilies.normal, fontSize: fontSizes.h1 }}>{props.awb.awbNumnber}</Text>
 		</TouchableOpacity>
 
-		<TouchableOpacity style={{ flex: 1 }} onPress={props.onSelect}>
+		<TouchableOpacity
+			style={{ flex: 1 }}
+			onPress={props.onSelect}
+			disabled={props.awb.codes == null || props.awb.codes.length == 0}
+		>
 			<View
 				style={{
 					alignItems: 'center',
@@ -31,7 +34,8 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 					backgroundColor: props.selected ? colors.buttonBackground : colors.background,
 					borderRadius: 4,
 					borderWidth: 1,
-					borderColor: '#bababa'
+					borderColor:
+						props.awb.codes == undefined || props.awb.codes.length == 0 ? colors.border : colors.borderDark
 				}}
 			>
 				{props.selected && <Image source={require('./img/ic_check.png')} style={{ width: 15, height: 15 }} />}
