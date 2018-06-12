@@ -53,7 +53,7 @@ export default (props: {
 	const borderWidth = props.ghost ? ghostMapping[mode].borderWidth : modeMapping[mode].borderWidth;
 
 	return (
-		<View style={{ borderRadius: 20 }}>
+		<View>
 			<TouchableOpacity
 				style={{
 					opacity: props.disabled ? 0.5 : 1,
@@ -61,10 +61,9 @@ export default (props: {
 					overflow: 'hidden',
 					borderColor,
 					borderWidth,
-					height: 40,
+					height: 50,
 					alignItems: 'center',
-					justifyContent: 'center',
-					borderRadius: 30
+					justifyContent: 'center'
 				}}
 				disabled={props.disabled}
 				onPress={props.onPress}

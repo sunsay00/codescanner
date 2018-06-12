@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AsyncStorage } from 'react-native';
 import UIAWBDetail from './ui/awbdetail';
-import BackButtonFrame from './backbuttonframe';
 
 type Props = NavigatorProps & {
 	awb: AWB;
