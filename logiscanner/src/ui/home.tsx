@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image, Dimensions, TextInput } from 'react-native';
 import { colors, fontFamilies, fontSizes } from './sg';
 import { Button, Input, Icon } from 'react-native-elements';
+import Frame from './frame';
 
 const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect: () => void }) => (
 	<View style={{ paddingTop: 5 }}>
@@ -99,27 +100,13 @@ export default (props: {
 	onSelect: (awb: string) => void;
 	onSearchText: (text: string) => void;
 }) => (
-	<View
-		style={{
-			backgroundColor: colors.background,
-			height: '100%',
-			marginBottom: -40
-		}}
-	>
-		<View
-			style={{
-				height: 40,
-				justifyContent: 'center',
-				backgroundColor: colors.background
-			}}
-		>
-			<Input
-				leftIcon={<Icon name="search" type="font-awesome" size={20} color="#ccccd1" />}
-				inputStyle={{ backgroundColor: colors.background, color: 'white' }}
-				containerStyle={{ backgroundColor: colors.background, width: '100%' }}
-				onChangeText={props.onSearchText}
-			/>
-		</View>
+	<Frame>
+		<Input
+			leftIcon={<Icon name="search" type="font-awesome" size={20} color="#ccccd1" />}
+			inputStyle={{ backgroundColor: colors.background, color: 'white' }}
+			containerStyle={{ backgroundColor: colors.background, width: '100%', height: 40 }}
+			onChangeText={props.onSearchText}
+		/>
 		<View style={{ paddingHorizontal: 15 }}>
 			<ScrollView>
 				{props.awbs.map((item) => (
@@ -135,7 +122,6 @@ export default (props: {
 			<View style={{ paddingTop: 10 }} />
 			<Button
 				icon={<Icon name="arrow-circle-up" type="font-awesome" size={20} color="white" />}
-				buttonStyle={{ backgroundColor: '#506da3' }}
 				loading={props.loading}
 				iconRight
 				title="UPLOAD"
@@ -143,5 +129,5 @@ export default (props: {
 				onPress={props.onUpload}
 			/>
 		</View>
-	</View>
+	</Frame>
 );

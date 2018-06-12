@@ -36,6 +36,31 @@ class Home extends React.Component<Props, State> {
 		});
 	}
 
+	onNavigatorEvent = (e: NavigatorEvent) => {
+		if (e.type == 'NavBarButtonPress') {
+			if (e.id == 'refresh') {
+			} else if (e.id == 'back') {
+			}
+		}
+	};
+
+	componentDidMount() {
+		this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+		this.props.navigator.setButtons({
+			leftButtons: [
+				{
+					title: 'Sign Out',
+					id: 'back'
+				}
+			],
+			rightButtons: [
+				{
+					title: 'Refresh',
+					id: 'refresh'
+				}
+			]
+		});
+	}
 	onItemPress = (awb: AWB) => {
 		this.props.navigator.push({
 			screen: 'scanner.awbdetail',
