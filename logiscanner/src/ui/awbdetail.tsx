@@ -66,7 +66,7 @@ export default (props: {
 						title="START SCANNING"
 						icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
 						iconRight
-						onPress={() => props.onScan}
+						onPress={() => props.onScan(props.awb)}
 						buttonStyle={{ width: 270 }}
 					/>
 				</View>
