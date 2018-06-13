@@ -93,7 +93,7 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 						justifyContent: 'center',
 						width: 25,
 						height: 25,
-						backgroundColor: props.selected ? '#50b8ea' : '#534571',
+						backgroundColor: props.selected ? '#50b8ea' : '#448a99',
 						borderRadius: 4,
 						borderWidth: 1,
 						borderColor:
