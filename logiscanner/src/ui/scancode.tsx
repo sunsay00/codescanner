@@ -10,6 +10,7 @@ export default (props: { code: BarCode; awb: AWB; onCodeDelete: (awb: AWB, code:
 			<View style={{ paddingHorizontal: 15, paddingTop: 20 }}>
 				<View
 					style={{
+						backgroundColor: colors.cardBackground,
 						justifyContent: 'center',
 						alignItems: 'center',
 						alignContent: 'center',

@@ -5,10 +5,21 @@ import { Button, Input, Icon } from 'react-native-elements';
 import Frame from './frame';
 
 const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect: () => void }) => (
-	<View style={{ paddingTop: 5 }}>
+	<View
+		style={{
+			padding: 8,
+			shadowColor: colors.background,
+			shadowOffset: {
+				width: 0,
+				height: 0
+			},
+			shadowRadius: 10,
+			shadowOpacity: 0.5
+		}}
+	>
 		<View
 			style={{
-				backgroundColor: colors.background,
+				backgroundColor: colors.cardBackground,
 				height: 100,
 				flexDirection: 'row',
 				alignItems: 'center',
@@ -16,8 +27,15 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 				paddingLeft: 20,
 				paddingRight: 10,
 				borderRadius: 15,
-				borderWidth: 1,
-				borderColor: colors.border
+				borderWidth: 0,
+				borderColor: colors.border,
+				shadowColor: '#000000',
+				shadowOffset: {
+					width: 3,
+					height: 3
+				},
+				shadowRadius: 5,
+				shadowOpacity: 1.0
 			}}
 		>
 			<TouchableOpacity style={{ flex: 10 }} onPress={props.onItem}>
@@ -75,11 +93,11 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 						justifyContent: 'center',
 						width: 25,
 						height: 25,
-						backgroundColor: props.selected ? colors.buttonBackground : colors.background,
+						backgroundColor: props.selected ? '#50b8ea' : '#534571',
 						borderRadius: 4,
 						borderWidth: 1,
 						borderColor:
-							props.awb.codes == undefined || props.awb.codes.length == 0 ? colors.border : '#00c6ae'
+							props.awb.codes == undefined || props.awb.codes.length == 0 ? colors.border : '#50b8ea'
 					}}
 				>
 					{props.selected && (
@@ -106,6 +124,9 @@ export default (props: {
 			inputStyle={{ backgroundColor: colors.background, color: 'white' }}
 			containerStyle={{ backgroundColor: colors.background, width: '100%', height: 40 }}
 			onChangeText={props.onSearchText}
+			autoCapitalize="none"
+			keyboardType="default"
+			autoCorrect={false}
 		/>
 		<View style={{ paddingHorizontal: 15 }}>
 			<ScrollView>
@@ -120,14 +141,16 @@ export default (props: {
 				))}
 			</ScrollView>
 			<View style={{ paddingTop: 10 }} />
-			<Button
-				icon={<Icon name="arrow-circle-up" type="font-awesome" size={20} color="white" />}
-				loading={props.loading}
-				iconRight
-				title="UPLOAD"
-				disabled={props.loading || props.selected == undefined || props.selected.length == 0}
-				onPress={props.onUpload}
-			/>
+			<View style={{ paddingHorizontal: 8 }}>
+				<Button
+					icon={<Icon name="arrow-circle-up" type="font-awesome" size={20} color="white" />}
+					loading={props.loading}
+					iconRight
+					title="UPLOAD"
+					disabled={props.loading || props.selected == undefined || props.selected.length == 0}
+					onPress={props.onUpload}
+				/>
+			</View>
 		</View>
 	</Frame>
 );

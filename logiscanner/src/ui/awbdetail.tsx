@@ -7,7 +7,7 @@ import Frame from './frame';
 const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	<View
 		style={{
-			backgroundColor: colors.background,
+			backgroundColor: colors.cardBackground,
 			height: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
@@ -18,17 +18,21 @@ const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	>
 		<TouchableOpacity style={{ flex: 1 }} onPress={props.onItemPress}>
 			<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-				<Icon name="barcode" type="font-awesome" color="#50b8ea" size={15} />
-				<Text
-					style={{
-						fontFamily: fontFamilies.normal,
-						fontSize: fontSizes.h2,
-						color: colors.text,
-						paddingLeft: 10
-					}}
-				>
-					{props.code.code}
-				</Text>
+				<View style={{ flex: 8 }}>
+					<Text
+						style={{
+							fontFamily: fontFamilies.normal,
+							fontSize: fontSizes.h2,
+							color: colors.text,
+							paddingLeft: 10
+						}}
+					>
+						{props.code.code}
+					</Text>
+				</View>
+				<View style={{ flex: 1 }}>
+					<Icon name="angle-right" type="font-awesome" color="#50b8ea" size={25} />
+				</View>
 			</View>
 		</TouchableOpacity>
 	</View>
@@ -85,7 +89,7 @@ export default (props: {
 						))}
 					</View>
 					)} />
-					<View style={{ paddingTop: 10 }}>
+					<View style={{ paddingTop: 10, paddingHorizontal: 18 }}>
 						<Button
 							icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
 							iconRight

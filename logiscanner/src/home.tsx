@@ -40,6 +40,7 @@ class Home extends React.Component<Props, State> {
 		if (e.type == 'NavBarButtonPress') {
 			if (e.id == 'refresh') {
 			} else if (e.id == 'back') {
+				this.props.navigator.pop();
 			}
 		}
 	};
