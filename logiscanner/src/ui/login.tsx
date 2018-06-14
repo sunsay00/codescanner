@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, TextInput } from 'react-native';
+import { View, Image, TextInput } from 'react-native';
 import Frame from './frame';
 import { Input, Icon, Button } from 'react-native-elements';
 import { colors } from './sg';
@@ -27,8 +27,8 @@ export default (props: {
 					paddingHorizontal: 40
 				}}
 			>
-				<TextInput style={{ width: '100%' }} />
-
+				<Image source={require('./img/logo.png')} style={{width: 125, height: 125}}/>
+				<View style={{height: 40}}/>
 				<Input
 					leftIcon={<Icon name="user" type="font-awesome" size={20} color="#ccccd1" />}
 					inputStyle={{ backgroundColor: colors.background, color: 'white' }}

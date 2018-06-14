@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UILogin from './ui/login';
+import UILogin from '../ui/login';
 
 type Props = NavigatorProps & {};
 
@@ -18,6 +18,10 @@ class Login extends React.Component<Props, State> {
 	}
 
 	onSigIn = () => {
+		this.setState({
+			userName:'',
+			password: ''
+		})
 		this.props.navigator.push({
 			screen: 'scanner.home',
 			backButtonHidden: true,
@@ -25,9 +29,16 @@ class Login extends React.Component<Props, State> {
 		});
 	};
 
-	onUserNameChange = (userName: string) => {};
-
-	onPasswordChange = (password: string) => {};
+	onUserNameChange = (userName: string) => {
+		this.setState({
+			userName
+		})
+	};
+	onPasswordChange = (password: string) => {
+		this.setState({
+			password
+		})
+	};
 
 	render() {
 		return (

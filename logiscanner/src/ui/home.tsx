@@ -4,6 +4,22 @@ import { colors, fontFamilies, fontSizes } from './sg';
 import { Button, Input, Icon } from 'react-native-elements';
 import Frame from './frame';
 
+const ItemDetail = (props: { icon: string; value: string }) => (
+	<View style={{flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
+		<Icon name={props.icon} type="font-awesome" color="#50b8ea" size={15} />
+			<Text
+				style={{
+					fontFamily: fontFamilies.normal,
+					fontSize: fontSizes.h2,
+					color: colors.text,
+					paddingLeft: 10
+					}}
+			>
+				{props.value}
+			</Text>
+	</View>
+);
+
 const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect: () => void }) => (
 	<View
 		style={{
@@ -39,53 +55,54 @@ const Item = (props: { awb: AWB; selected: boolean; onItem: () => void; onSelect
 			}}
 		>
 			<TouchableOpacity style={{ flex: 10 }} onPress={props.onItem}>
-				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Icon name="book" type="font-awesome" color="#50b8ea" size={15} />
-					<Text
-						style={{
-							fontFamily: fontFamilies.normal,
-							fontSize: fontSizes.h2,
-							color: colors.text,
-							paddingLeft: 10
-						}}
-					>
-						{props.awb.awbNumnber}
-					</Text>
+				<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'flex-start'}}>
+				<View style={{flex:2, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='book' 
+						value={props.awb.awbNumnber}/>
+					</View>
+					<View style={{flex:1, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='hashtag' 
+						value={props.awb.totalCodes.toString()}/>
+						</View>
 				</View>
 				<View style={{ height: 5 }} />
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Icon name="columns" type="font-awesome" color="#50b8ea" size={15} />
-					<Text
-						style={{
-							fontFamily: fontFamilies.normal,
-							fontSize: fontSizes.h2,
-							color: colors.text,
-							paddingLeft: 10
-						}}
-					>
-						{props.awb.houseNumber}
-					</Text>
+				<View style={{flex:2, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='columns' 
+						value={props.awb.houseNumber}/>
+						</View>
+					<View style={{flex:1, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='barcode' 
+						value={props.awb.codes == undefined || props.awb.codes.filter(c=>!c.isUploaded).length == 0 
+							? '--' 
+							: props.awb.codes.filter(c=>!c.isUploaded).length.toString()}/>
+					</View>
 				</View>
 				<View style={{ height: 5 }} />
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Icon name="dehaze" color="#50b8ea" size={15} />
-					<Text
-						style={{
-							fontFamily: fontFamilies.normal,
-							fontSize: fontSizes.h2,
-							color: colors.text,
-							paddingLeft: 10
-						}}
-					>
-						{props.awb.poNumber}
-					</Text>
+				<View style={{flex:2, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='list' 
+						value={props.awb.poNumber}/>
+						</View>
+						<View style={{flex:1, alignItems:'flex-start'}}>
+					<ItemDetail 
+						icon='arrow-circle-up' 
+						value={props.awb.codes == undefined || props.awb.codes.filter(c=>c.isUploaded).length == 0
+						? '--' 
+						: props.awb.codes.filter(c=>c.isUploaded).length.toString()}/>
+					</View>
 				</View>
 			</TouchableOpacity>
 
 			<TouchableOpacity
 				style={{ flex: 1 }}
 				onPress={props.onSelect}
-				disabled={props.awb.codes == null || props.awb.codes.length == 0}
+				disabled={props.awb.codes == null || props.awb.codes.length == 0 || props.awb.codes.filter(c=>!c.isUploaded).length == 0}
 			>
 				<View
 					style={{

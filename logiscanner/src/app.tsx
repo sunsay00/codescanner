@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Navigation } from 'react-native-navigation';
-import Home from './home';
-import AWBDetail from './awbdetail';
-import Scan from './scan';
-import ScanCode from './scancode';
-import Login from './login';
+import Home from './components/home';
+import AWBDetail from './components/awbdetail';
+import Scan from './components/scan';
+import ScanCode from './components/scancode';
+import Login from './components/login';
 
 Navigation.registerComponent('scanner.login', () => Login);
 Navigation.registerComponent('scanner.home', () => Home);

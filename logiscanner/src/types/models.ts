@@ -4,8 +4,10 @@ type AWB = {
 	houseNumber: string;
 	poNumber: string;
 	codes?: BarCode[];
+	totalCodes: number;
 };
 
 type BarCode = {
 	code: string;
+	isUploaded: boolean;
 };
