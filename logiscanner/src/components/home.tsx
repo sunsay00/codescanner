@@ -15,14 +15,72 @@ class Home extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
 		let awbs = [
-			{ id: '1', awbNumnber: '11111111111', houseNumber: '2222222222222', poNumber: '3e333e33333', totalCodes: 10 },
+			{
+				id: '1',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
 			{
 				id: '2',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
+			{
+				id: '3',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
+			{
+				id: '4',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
+			{
+				id: '5',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
+			{
+				id: '6',
+				awbNumnber: '11111111111',
+				houseNumber: '2222222222222',
+				poNumber: '3e333e33333',
+				totalCodes: 10
+			},
+			{
+				id: '7',
 				awbNumnber: '2322222222',
 				houseNumber: '3344455555',
 				poNumber: '334343d993',
 				totalCodes: 20,
-				codes: [ { code: 'dkkddkdk', isUploaded:false }, { code: 'ddddd', isUploaded: false} ]
+				codes: [
+					{ code: 'dkkddkdk', isUploaded: false },
+					{ code: 'ddddd', isUploaded: false },
+					{ code: 'ddddd1', isUploaded: false },
+					{ code: 'ddddd2', isUploaded: false },
+					{ code: 'ddddd3', isUploaded: false },
+					{ code: 'ddddd4', isUploaded: false },
+					{ code: 'ddddd5', isUploaded: false },
+					{ code: 'ddddd6', isUploaded: false },
+					{ code: 'ddddd7', isUploaded: false },
+					{ code: 'ddddd8', isUploaded: false },
+					{ code: 'ddddd9', isUploaded: false },
+					{ code: 'ddddd10', isUploaded: false },
+					{ code: 'ddddd11', isUploaded: false },
+					{ code: 'ddddd12', isUploaded: false },
+					{ code: 'ddddd13', isUploaded: false },
+					{ code: 'ddddd14', isUploaded: false }
+				]
 			}
 		];
 		this.state = {
@@ -64,14 +122,35 @@ class Home extends React.Component<Props, State> {
 		});
 	}
 	onItemPress = (awb: AWB) => {
-		this.props.navigator.push({
-			screen: 'scanner.awbdetail',
-			backButtonHidden: true,
-			passProps: {
-				awb,
-				onChange: this.onChange
-			}
-		});
+		if (awb.codes != undefined && awb.codes.length > 0) {
+			this.props.navigator.push({
+				screen: 'scanner.awbdetail',
+				backButtonHidden: true,
+				passProps: {
+					awb,
+					onScan: this.onScanCode,
+					onChange: this.onChange
+				}
+			});
+		} else {
+			this.props.navigator.push({
+				screen: 'scanner.scan',
+				backButtonHidden: true,
+				passProps: {
+					awb,
+					onScan: this.onScanCode
+				}
+			});
+		}
+	};
+
+	onScanCode = (awb: AWB, code: string) => {
+		let currentAWB = awb;
+		if (currentAWB.codes == undefined) {
+			currentAWB.codes = [];
+		}
+		currentAWB.codes.push({ code: code, isUploaded: false });
+		this.onChange(currentAWB);
 	};
 
 	onChange = (awb: AWB) => {

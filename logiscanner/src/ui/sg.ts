@@ -1,22 +1,19 @@
 export const colors = {
-	background: '#2e6c87',
+	app: '#48a399',
+	background: 'white',
 	cardBackground: '#448a99',
-	border: '#6a739f',
+	border: '#d6d8d8',
 	borderDark: '#bababa',
-	text: '#d0cbef',
-	buttonBackground: '#00c6ae',
+	text: '#616363',
+	buttonBackground: '#e57564',
 	buttonFontColor: '#ffffff',
 	buttonGhostBorder: '#f5f5f5',
 	transparency: '#00000000'
 };
 
 export const fontFamilies = {
-	oblique: 'Helvetica-Oblique',
-	boldOblique: 'Helvetica-BoldOblique',
-	normal: 'Helvetica',
-	light: 'Helvetica-Light',
-	bold: 'Helvetica-Bold',
-	lightOblique: 'Helvetica-LightOblique'
+	normal: 'avenir',
+	bold: 'avenir-black'
 };
 
 export const fontSizes = {

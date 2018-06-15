@@ -5,6 +5,7 @@ import UIAWBDetail from '../ui/awbdetail';
 type Props = NavigatorProps & {
 	awb: AWB;
 	onChange: (awb: AWB) => void;
+	onScan: (awb: AWB) => void;
 };
 
 type State = {
@@ -77,22 +78,9 @@ class AWBDetail extends React.Component<Props, State> {
 			screen: 'scanner.scan',
 			passProps: {
 				awb,
-				onScan: this.onScanCode
+				onScan: this.props.onScan
 			}
 		});
-	};
-
-	onScanCode = (awb: AWB, code: string) => {
-		let currentAWB = awb;
-		if (currentAWB.codes == undefined) {
-			currentAWB.codes = [];
-		}
-		currentAWB.codes.push({ code: code, isUploaded: false});
-		AsyncStorage.setItem(awb.id, JSON.stringify(currentAWB));
-		this.setState({
-			awb: currentAWB
-		});
-		this.props.onChange(currentAWB);
 	};
 
 	render() {

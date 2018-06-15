@@ -7,7 +7,7 @@ import Frame from './frame';
 const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	<View
 		style={{
-			backgroundColor: colors.cardBackground,
+			backgroundColor: colors.background,
 			height: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
@@ -31,7 +31,7 @@ const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 					</Text>
 				</View>
 				<View style={{ flex: 1 }}>
-					<Icon name="angle-right" type="font-awesome" color="#50b8ea" size={25} />
+					<Icon name="angle-right" type="font-awesome" color={colors.text} size={25} />
 				</View>
 			</View>
 		</TouchableOpacity>
@@ -56,22 +56,18 @@ export default (props: {
 						justifyContent: 'center'
 					}}
 				>
-					<Text
-						style={{
-							paddingBottom: 20,
-							fontFamily: fontFamilies.bold,
-							color: colors.text,
-							fontSize: fontSizes.h1
-						}}
-					>
-						You have not scan any code yet
-					</Text>
 					<Button
 						title="START SCANNING"
-						icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
+						icon={<Icon name="arrow-circle-right" type="font-awesome" size={20} color="white" />}
 						iconRight
 						onPress={() => props.onScan(props.awb)}
-						buttonStyle={{ width: 270 }}
+						buttonStyle={{
+							width: '100%',
+							height: 50,
+							borderRadius: 25,
+							backgroundColor: colors.buttonBackground
+						}}
+						titleStyle={{ fontFamily: fontFamilies.normal }}
 					/>
 				</View>
 			</Frame>
@@ -89,15 +85,18 @@ export default (props: {
 						))}
 					</View>
 					)} />
-					<View style={{ paddingTop: 10, paddingHorizontal: 18 }}>
-						<Button
-							icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
-							iconRight
-							title="CONTINUE SCANNING"
-							onPress={() => props.onScan(props.awb)}
-						/>
-					</View>
 				</ScrollView>
+				<Button
+					icon={<Icon name="arrow-circle-right" type="font-awesome" size={20} color="white" />}
+					iconRight
+					title="CONTINUE SCANNING"
+					onPress={() => props.onScan(props.awb)}
+					titleStyle={{ fontFamily: fontFamilies.normal }}
+					buttonStyle={{
+						backgroundColor: colors.buttonBackground,
+						borderRadius: 0
+					}}
+				/>
 			</Frame>
 		)}
 	</View>
