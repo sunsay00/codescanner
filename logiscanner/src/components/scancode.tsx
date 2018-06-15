@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UIScanCode from './ui/scancode';
+import UIScanCode from '../ui/scancode';
 
 type Props = NavigatorProps & {
 	code: BarCode;
@@ -24,7 +24,7 @@ class ScanCode extends React.Component<Props, State> {
 		this.props.navigator.setButtons({
 			leftButtons: [
 				{
-					icon: require('./ui/img/nav/ic_arrow_back.png'),
+					icon: require('../ui/img/nav/ic_arrow_back.png'),
 					id: 'back'
 				}
 			]

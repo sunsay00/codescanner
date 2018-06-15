@@ -2,11 +2,12 @@ import * as React from 'react';
 import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { colors, fontFamilies, fontSizes } from './sg';
 import { Button, Icon } from 'react-native-elements';
+import Frame from './frame';
 
 const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	<View
 		style={{
-			backgroundColor: colors.background,
+			backgroundColor: colors.cardBackground,
 			height: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
@@ -17,17 +18,21 @@ const Item = (props: { code: BarCode; onItemPress: () => void }) => (
 	>
 		<TouchableOpacity style={{ flex: 1 }} onPress={props.onItemPress}>
 			<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-				<Icon name="barcode" type="font-awesome" color="#50b8ea" size={15} />
-				<Text
-					style={{
-						fontFamily: fontFamilies.normal,
-						fontSize: fontSizes.h2,
-						color: colors.text,
-						paddingLeft: 10
-					}}
-				>
-					{props.code.code}
-				</Text>
+				<View style={{ flex: 8 }}>
+					<Text
+						style={{
+							fontFamily: fontFamilies.normal,
+							fontSize: fontSizes.h2,
+							color: colors.text,
+							paddingLeft: 10
+						}}
+					>
+						{props.code.code}
+					</Text>
+				</View>
+				<View style={{ flex: 1 }}>
+					<Icon name="angle-right" type="font-awesome" color="#50b8ea" size={25} />
+				</View>
 			</View>
 		</TouchableOpacity>
 	</View>
@@ -40,76 +45,60 @@ export default (props: {
 	onScan: (awb: AWB) => void;
 	onCodeDelete: (awb: AWB, code: BarCode) => void;
 }) => (
-	<View style={{ height: '100%', backgroundColor: colors.background }}>
+	<View>
 		{props.awb.codes == undefined || props.awb.codes.length == 0 ? (
-			<View
-				style={{
-					width: '100%',
-					height: '100%',
-					alignItems: 'center',
-					justifyContent: 'center'
-				}}
-			>
-				<Text
-					style={{
-						paddingBottom: 20,
-						fontFamily: fontFamilies.bold,
-						color: colors.text,
-						fontSize: fontSizes.h1
-					}}
-				>
-					You have not scan any code yet
-				</Text>
-				<Button
-					title="START SCANNING"
-					icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
-					iconRight
-					onPress={() => props.onScan}
-					buttonStyle={{ width: 270 }}
-				/>
-
-				{/*
-				<TouchableOpacity
-					style={{
-						width: 150,
-						height: 150,
-						borderRadius: 75,
-						backgroundColor: colors.buttonBackground,
-						justifyContent: 'center',
-						alignItems: 'center'
-					}}
-					onPress={() => props.onScan(props.awb)}
-				>
-					<Text
-						style={{ color: colors.buttonFontColor, fontFamily: fontFamilies.bold, fontSize: fontSizes.h1 }}
-					>
-						Start Scanning
-					</Text>
-				</TouchableOpacity>
-				*/}
-			</View>
-		) : (
-			<ScrollView>
+			<Frame>
 				<View
 					style={{
 						width: '100%',
-						backgroundColor: colors.background
+						height: '100%',
+						alignItems: 'center',
+						justifyContent: 'center'
 					}}
 				>
-					{props.awb.codes.map((item) => (
-						<Item key={item.code} code={item} onItemPress={() => props.onItemPress(props.awb, item)} />
-					))}
-				</View>
-				)} />
-				<View style={{ paddingTop: 10 }}>
+					<Text
+						style={{
+							paddingBottom: 20,
+							fontFamily: fontFamilies.bold,
+							color: colors.text,
+							fontSize: fontSizes.h1
+						}}
+					>
+						You have not scan any code yet
+					</Text>
 					<Button
+						title="START SCANNING"
 						icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
 						iconRight
-						title="CONTINUE SCANNING"
 						onPress={() => props.onScan(props.awb)}
+						buttonStyle={{ width: 270 }}
 					/>
 				</View>
-			</ScrollView>
+			</Frame>
+		) : (
+			<Frame>
+				<ScrollView>
+					<View
+						style={{
+							width: '100%',
+							backgroundColor: colors.background
+						}}
+					>
+						{props.awb.codes.map((item) => (
+							<Item key={item.code} code={item} onItemPress={() => props.onItemPress(props.awb, item)} />
+						))}
+					</View>
+					)} />
+					<View style={{ paddingTop: 10, paddingHorizontal: 18 }}>
+						<Button
+							icon={<Icon name="barcode" type="font-awesome" size={20} color="white" />}
+							iconRight
+							title="CONTINUE SCANNING"
+							onPress={() => props.onScan(props.awb)}
+						/>
+					</View>
+				</ScrollView>
+			</Frame>
 		)}
 	</View>
 );

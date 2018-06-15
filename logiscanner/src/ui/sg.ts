@@ -1,8 +1,9 @@
 export const colors = {
-	background: '#2e3246',
+	background: '#2e6c87',
+	cardBackground: '#448a99',
 	border: '#6a739f',
 	borderDark: '#bababa',
-	text: '#6a739f',
+	text: '#d0cbef',
 	buttonBackground: '#00c6ae',
 	buttonFontColor: '#ffffff',
 	buttonGhostBorder: '#f5f5f5',

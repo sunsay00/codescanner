@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AsyncStorage, View, Text } from 'react-native';
-import UIHome from './ui/home';
+import UIHome from '../ui/home';
 
 type Props = NavigatorProps;
 
@@ -15,13 +15,14 @@ class Home extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
 		let awbs = [
-			{ id: '1', awbNumnber: '11111111111', houseNumber: '2222222222222', poNumber: '3e333e33333' },
+			{ id: '1', awbNumnber: '11111111111', houseNumber: '2222222222222', poNumber: '3e333e33333', totalCodes: 10 },
 			{
 				id: '2',
 				awbNumnber: '2322222222',
 				houseNumber: '3344455555',
 				poNumber: '334343d993',
-				codes: [ { code: 'dkkddkdk' }, { code: 'ddddd' } ]
+				totalCodes: 20,
+				codes: [ { code: 'dkkddkdk', isUploaded:false }, { code: 'ddddd', isUploaded: false} ]
 			}
 		];
 		this.state = {
@@ -36,6 +37,32 @@ class Home extends React.Component<Props, State> {
 		});
 	}
 
+	onNavigatorEvent = (e: NavigatorEvent) => {
+		if (e.type == 'NavBarButtonPress') {
+			if (e.id == 'refresh') {
+			} else if (e.id == 'back') {
+				this.props.navigator.pop();
+			}
+		}
+	};
+
+	componentDidMount() {
+		this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
+		this.props.navigator.setButtons({
+			leftButtons: [
+				{
+					title: 'Sign Out',
+					id: 'back'
+				}
+			],
+			rightButtons: [
+				{
+					title: 'Refresh',
+					id: 'refresh'
+				}
+			]
+		});
+	}
 	onItemPress = (awb: AWB) => {
 		this.props.navigator.push({
 			screen: 'scanner.awbdetail',

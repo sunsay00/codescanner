@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AsyncStorage } from 'react-native';
-import UIAWBDetail from './ui/awbdetail';
+import UIAWBDetail from '../ui/awbdetail';
 
 type Props = NavigatorProps & {
 	awb: AWB;
@@ -34,7 +34,7 @@ class AWBDetail extends React.Component<Props, State> {
 		this.props.navigator.setButtons({
 			leftButtons: [
 				{
-					icon: require('./ui/img/nav/ic_arrow_back.png'),
+					icon: require('../ui/img/nav/ic_arrow_back.png'),
 					id: 'back'
 				}
 			]
@@ -87,7 +87,7 @@ class AWBDetail extends React.Component<Props, State> {
 		if (currentAWB.codes == undefined) {
 			currentAWB.codes = [];
 		}
-		currentAWB.codes.push({ code: code });
+		currentAWB.codes.push({ code: code, isUploaded: false});
 		AsyncStorage.setItem(awb.id, JSON.stringify(currentAWB));
 		this.setState({
 			awb: currentAWB

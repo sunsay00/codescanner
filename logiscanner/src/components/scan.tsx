@@ -26,7 +26,7 @@ class Scan extends React.Component<Props, State> {
 		this.props.navigator.setButtons({
 			leftButtons: [
 				{
-					icon: require('./ui/img/nav/ic_arrow_back.png'),
+					icon: require('../ui/img/nav/ic_arrow_back.png'),
 					id: 'back'
 				}
 			]
